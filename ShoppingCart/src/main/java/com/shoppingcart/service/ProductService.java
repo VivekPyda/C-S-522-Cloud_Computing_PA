@@ -9,5 +9,5 @@ public interface ProductService {
 
 	Product saveProduct(Product product);
 	
-	void deleteProductById(Long id);
+	void deleteProductById(Integer id);
 }
