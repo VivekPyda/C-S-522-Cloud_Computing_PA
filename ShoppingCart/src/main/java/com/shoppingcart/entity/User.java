@@ -12,7 +12,7 @@ import jakarta.persistence.Table;
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long userID;
+	private int userID;
 
 	@Column(name = "Username")
 	private String userName;
@@ -27,7 +27,7 @@ public class User {
 		// Default constructor required by JPA
 	}
 
-	public User(Long userID, String userName, String userPassword, String userPreferences) {
+	public User(int userID, String userName, String userPassword, String userPreferences) {
 		this.userID = userID;
 		this.userName = userName;
 		this.userPassword = userPassword;
@@ -36,11 +36,11 @@ public class User {
 
 	// Getters and Setters
 
-	public Long getUserID() {
+	public int getUserID() {
 		return userID;
 	}
 
-	public void setUserID(Long userID) {
+	public void setUserID(int userID) {
 		this.userID = userID;
 	}
 

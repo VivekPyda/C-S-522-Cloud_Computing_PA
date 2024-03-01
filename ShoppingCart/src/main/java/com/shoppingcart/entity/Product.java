@@ -12,7 +12,7 @@ import jakarta.persistence.Table;
 public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long productId;
+	private int productID;
 
 	@Column(name = "name")
 	private String name;
@@ -26,12 +26,25 @@ public class Product {
 	@Column(name = "inventorycount")
 	private int inventoryCount;
 
-	public Long getProductId() {
-		return productId;
+	public Product() {
+		// Default constructor required by JPA
 	}
 
-	public void setProductId(Long productId) {
-		this.productId = productId;
+	public Product(int productID, String name, String decription, String manufacturerName, int inventoryCount) {
+		super();
+		this.productID = productID;
+		this.name = name;
+		this.decription = decription;
+		this.manufacturerName = manufacturerName;
+		this.inventoryCount = inventoryCount;
+	}
+
+	public int getProductID() {
+		return productID;
+	}
+
+	public void setProductID(int productID) {
+		this.productID = productID;
 	}
 
 	public String getName() {
