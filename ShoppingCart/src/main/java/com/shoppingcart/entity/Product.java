@@ -17,8 +17,8 @@ public class Product {
 	@Column(name = "name")
 	private String name;
 
-	@Column(name = "decription")
-	private String decription;
+	@Column(name = "description")
+	private String description;
 
 	@Column(name = "manufacturername")
 	private String manufacturerName;
@@ -30,11 +30,11 @@ public class Product {
 		// Default constructor required by JPA
 	}
 
-	public Product(int productID, String name, String decription, String manufacturerName, int inventoryCount) {
+	public Product(int productID, String name, String description, String manufacturerName, int inventoryCount) {
 		super();
 		this.productID = productID;
 		this.name = name;
-		this.decription = decription;
+		this.description = description;
 		this.manufacturerName = manufacturerName;
 		this.inventoryCount = inventoryCount;
 	}
@@ -55,12 +55,12 @@ public class Product {
 		this.name = name;
 	}
 
-	public String getDecription() {
-		return decription;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDecription(String decription) {
-		this.decription = decription;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public String getManufacturerName() {

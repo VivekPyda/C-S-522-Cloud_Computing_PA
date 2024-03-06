@@ -15,10 +15,10 @@
 		<div class="container-fluid justify-content-center">
 			<div class="text-center" id="navbarNav">
 				<ul class="navbar-nav text-center">
-					<li class="nav-item"><a class="nav-link" aria-current="page"
-						th:href="@{/}">Purchase</a></li>
 					<li class="nav-item"><a class="nav-link active"
-						aria-current="page" th:href="@{/users}">Users</a></li>
+						aria-current="page" th:href="@{/}">Purchase</a></li>
+					<li class="nav-item"><a class="nav-link" aria-current="page"
+						th:href="@{/users}">Users</a></li>
 					<li class="nav-item"><a class="nav-link"
 						th:href="@{/products}">Products</a></li>
 				</ul>
@@ -28,23 +28,28 @@
 	<div class="container">
 		<div
 			class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card mt-5">
-			<h1 class="text-center">Create New User</h1>
+			<h1 class="text-center">Create New Product</h1>
 			<div class="card-body">
-				<form th:action="@{/users}" th:object="${user}" method="POST">
+				<form th:action="@{/products}" th:object="${product}" method="POST">
 					<div class="form-group">
-						<label>User Name</label> <input type="text" name="userName"
-							th:field="*{userName}" class="form-control"
-							placeholder="Enter user name">
+						<label>Product Name</label> <input type="text" name="productName"
+							th:field="*{name}" class="form-control"
+							placeholder="Enter product name">
 					</div>
 					<div class="form-group">
-						<label>User Password</label> <input type="text"
-							name="userPassword" th:field="*{userPassword}"
-							class="form-control" placeholder="Enter user password">
+						<label>Description</label> <input type="text" name="description"
+							th:field="*{description}" class="form-control"
+							placeholder="Enter product description">
 					</div>
 					<div class="form-group">
-						<label>User Preferences</label> <input type="text"
-							name="userPreferences" th:field="*{userPreferences}"
-							class="form-control" placeholder="Enter user preferences">
+						<label>Manufacturer Name</label> <input type="text"
+							name="manufacturerName" th:field="*{manufacturerName}"
+							class="form-control" placeholder="Enter manufacturer's name">
+					</div>
+					<div class="form-group">
+						<label>Inventory Count</label> <input type="number"
+							name="inventoryCount" th:field="*{inventoryCount}"
+							class="form-control" placeholder="Enter quantity">
 					</div>
 					<div class="box-footer">
 						<button type="submit" class="btn btn-primary">Submit</button>
