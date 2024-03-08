@@ -1,5 +1,8 @@
 package com.shoppingcart.entity;
 
+import java.sql.Date;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
@@ -13,11 +16,11 @@ public class ProductBought {
 	@EmbeddedId
 	private ProductBoughtID productBoughtID;
 
-	@ManyToOne
+	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	@JoinColumn(name = "UserID", referencedColumnName = "userID", insertable = false, updatable = false)
 	private User user;
 
-	@ManyToOne
+	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	@JoinColumn(name = "ProductID", referencedColumnName = "productID", insertable = false, updatable = false)
 	private Product product;
 
@@ -31,7 +34,7 @@ public class ProductBought {
 	private int quantity;
 
 	@Column(name = "Dateofpurchase")
-	private String dateOfPurchase;
+	private Date dateOfPurchase;
 
 	public ProductBoughtID getProductBoughtID() {
 		return productBoughtID;
@@ -65,11 +68,11 @@ public class ProductBought {
 		this.quantity = quantity;
 	}
 
-	public String getDateOfPurchase() {
+	public Date getDateOfPurchase() {
 		return dateOfPurchase;
 	}
 
-	public void setDateOfPurchase(String dateOfPurchase) {
+	public void setDateOfPurchase(Date dateOfPurchase) {
 		this.dateOfPurchase = dateOfPurchase;
 	}
 }

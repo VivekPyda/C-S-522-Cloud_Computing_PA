@@ -45,8 +45,7 @@ public class ProductServiceImpl implements ProductService {
             product.setInventoryCount(updatedInventory);
             productRepository.save(product);
         } else {
-            // Handle the case where the product is not found
-            // You may throw an exception, log an error, or handle it as needed.
+        	
         }
     }
 }

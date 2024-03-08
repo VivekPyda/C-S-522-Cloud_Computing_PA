@@ -1,10 +1,14 @@
 package com.shoppingcart.entity;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -25,6 +29,9 @@ public class Product {
 
 	@Column(name = "inventorycount")
 	private int inventoryCount;
+
+	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<ProductBought> productsBought;
 
 	public Product() {
 		// Default constructor required by JPA
