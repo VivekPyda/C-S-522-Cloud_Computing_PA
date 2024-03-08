@@ -38,7 +38,7 @@ public class ProductBoughtController {
 		// Populate model attributes needed for the form
 		model.addAttribute("productBought", new ProductBought());
 		model.addAttribute("users", userService.getAllUsers());
-		model.addAttribute("products", productService.getAllProducts());
+		model.addAttribute("products", productService.findByInventoryCountGreaterThan(0));
 		return "purchase";
 	}
 

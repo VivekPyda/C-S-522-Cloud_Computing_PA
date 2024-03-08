@@ -25,6 +25,11 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
+	public List<Product> findByInventoryCountGreaterThan(int quantity) {
+		return productRepository.findByInventoryCountGreaterThan(quantity);
+	}
+
+	@Override
 	public Product saveProduct(Product product) {
 		return productRepository.save(product);
 	}
@@ -33,19 +38,13 @@ public class ProductServiceImpl implements ProductService {
 	public void deleteProductById(Integer id) {
 		productRepository.deleteById(id);
 	}
-	
-	@Override
-    public void updateInventoryCount(Integer productId, int quantity) {
-        Optional<Product> optionalProduct = productRepository.findById(productId);
 
-        if (optionalProduct.isPresent()) {
-            Product product = optionalProduct.get();
-            int currentInventory = product.getInventoryCount();
-            int updatedInventory = Math.max(currentInventory - quantity, 0);
-            product.setInventoryCount(updatedInventory);
-            productRepository.save(product);
-        } else {
-        	
-        }
-    }
+	@Override
+	public void updateInventoryCount(Integer productId, int quantity) {
+		Product product = productRepository.findById(productId).get();
+		int currentInventory = product.getInventoryCount();
+		int updatedInventory = Math.max(currentInventory - quantity, 0);
+		product.setInventoryCount(updatedInventory);
+		productRepository.save(product);
+	}
 }
