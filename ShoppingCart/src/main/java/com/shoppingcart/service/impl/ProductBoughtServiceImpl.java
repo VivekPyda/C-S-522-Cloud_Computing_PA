@@ -41,13 +41,24 @@ public class ProductBoughtServiceImpl implements ProductBoughtService {
 
 	@Override
 	public void processPurchase(ProductBought productBought) {
+		Optional<ProductBought> optionalProductBought = productBoughtRepository
+				.findById(productBought.getProductBoughtID());
+
+		if (optionalProductBought.isPresent()) {
+			ProductBought existingPurchaseEntry = optionalProductBought.get();
+			productService.updateInventoryCount(productBought.getProductBoughtID().getProductID(),
+					productBought.getQuantity() - existingPurchaseEntry.getQuantity());
+		} else {
+			productService.updateInventoryCount(productBought.getProductBoughtID().getProductID(),
+					productBought.getQuantity());
+		}
+
 		Product product = productRepository.findById(productBought.getProductBoughtID().getProductID()).get();
 		User user = userRepository.findById(productBought.getProductBoughtID().getUserID()).get();
 		productBought.setProductName(product.getName());
 		productBought.setUserName(user.getUserName());
 		productBoughtRepository.save(productBought);
-		productService.updateInventoryCount(productBought.getProductBoughtID().getProductID(),
-				productBought.getQuantity());
+
 	}
 
 	@Override
